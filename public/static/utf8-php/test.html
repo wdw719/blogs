@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>商品名称</td>
+			<td>
+				<input type="text" name="g_name" id="g_name" placeholder="请输入商品名称">
+			</td>
+		</tr>
+		<tr>
+			<td>商品状态</td>
+			<td>
+				<input type="radio" name="g_status" value="1">上架
+				<input type="radio" name="g_status" value="2">下架
+			</td>
+		</tr>
+		<tr>
+			<td>描述</td>
+			<td style="height: 100px; width: 500px;">
+				<!-- 加载编辑器的容器 -->
+				    <script id="container" name="content" id="aa" type="text/plain">
+				        这里写你的初始化内容
+				    </script>
+				<!-- 配置文件 -->
+				    <script type="text/javascript" src="ueditor.config.js"></script>
+				    <!-- 编辑器源码文件 -->
+				    <script type="text/javascript" src="ueditor.all.js"></script>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="提交" onclick="sub();"></td>
+		</tr>
+	</table>
+
+<!-- 实例化编辑器 -->
+<script src="http://www.01.com/jquery.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+
+    function sub(){
+    	var lasst_val = ue.getContent();
+    	alert(lasst_val);
+    	
+    }
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<!--添加管理员-->
+<div class="layui-body"  >
+    <!-- 友情链接添加 -->
+    <div style="padding: 50px; margin-left: 200px;" class="container">
+        <form action="/blado" method="post" enctype="multipart/form-data">
+            <div class="container bts">
+                <h3 >友情链接添加 </h3>
+
+                <div class="form-group col-lg-3">
+                    <label >友情链接标题:</label>
+                    <td class="b"> <input type="text" id="tit" name="b_bltit" class="form-control" ></td>
+                    <label >友情链接:</label>
+                    <td class="b"> <input type="text" id="link" name="b_blink" class="form-control" ></td>
+                    <br>
+                    <td > <input type="submit" id="" name="" class="btn btn-info btn-lg " value="添加广告" ></td>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+    //友情链接
+    $("#link").blur(function () {
+        var link=$(this).val()
+        var links=/^[\w\W]{0,500}$/
+        if(link==''){
+            alert("不能为空")
+        }
+        if(links.test(link)){
+
+        }else{
+            alert("广告链接不能超过个500字符")
+        }
+    })
+    //友情链接标题
+    $("#tit").blur(function () {
+        var tit=$(this).val()
+        var tits=/^[\u4e00-\u9fa5][\w\W]{0,50}$/
+        if(tit==''){
+            alert("不能为空")
+        }
+        if(tits.test(tit)){
+        }else{
+            alert("不能超过50个字符")
+        }
+    })
+</script>
+{include file="blog/booter" /}

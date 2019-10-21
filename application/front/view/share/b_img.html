@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改头像</title>
+    <style>
+        input[type="submit"]{
+            outline: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #31B0D5;
+            border: none;
+            width: 100px;
+            height: 35px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+         <h3 style="margin-left: 60px;">修改头像</h3>
+
+         <form action="/bpic" method="post" enctype="multipart/form-data">
+             <input type="hidden" name="id" value="<?php echo $id;?>">
+             <input type="file" name="file" style="margin-left: 70px;"><br><br>
+             <input type="submit" style="margin-left: 75px;" value="上传头像">
+
+         </form>
+</body>
+</html>

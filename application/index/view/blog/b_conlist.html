@@ -1,0 +1,101 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+
+?>
+<!---->
+<div class="layui-body"  >
+    <!-- 评论未审核列表 -->
+    <div style="padding: 90px; margin-left: 0px;" class="container">
+        <table id="demo" class="table ">
+                <td>ID</td>
+                <td ><p style="margin-left: 15px;">评论人</p></td>
+                <td><p style="margin-left: 30px;">评论内容</p></td>
+            <span id="s">
+                <input type="hidden" ><img src="http://www.blog.com/upload/jian.png"  class="order" style="width: 20px;height: 20px; margin-left: 390px;" /></span>
+                <td >评论时间</td>
+                <td>评论状态</td>
+                <td><p  style="margin-left: 70px;">操作</p></td>
+            </tr>
+<tbody id="t">
+            {volist name="red" id="vo"}
+            <tr>
+                <td>{$vo.id}</td>
+                <td><p style="margin-left: 10px;">{$vo.b_showname}</p></td>
+                <td class="con" onload="f()" data-s="{$vo.b_content}">{$vo.b_content}</td>
+                <td data-time="{$vo.b_ptime}" class="btns">{$vo.b_ptime}</td>
+                <td>{eq name="vo.b_stas" value="0"}
+                      待审核
+                    {else/}
+                    {/eq}</td>
+                <td>
+                    <button class="btn am-btn-default" style="margin-right: 0px;"><a href="/bcon?c_id={$vo.c_id}">审核通过</a></button>
+                    <button class="btn am-btn-default" style="margin-right: 0px;"><a href="/bton?c_id={$vo.c_id}">审核不通过</a></button>
+                </td>
+            </tr>
+            {/volist}
+</tbody>
+
+        </table>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+    // $(function () {
+    //        function f() {
+    //     var t=$(".con").attr("data-s");
+    //  alert(t)
+    //        }
+    //     window.onload=function(){
+    //         f();
+    //     }
+    //
+    // })
+ //评论未审核时间降序
+   $(".order").click(function () {
+       var time=$(".btns").attr('data-time')
+
+       $.ajax({
+           url:'/bdiscu',
+           dataType:'json',
+           data:{time:time},
+           success:function (e) {
+               var str=''
+               var str1=''
+               str1+='<tr>'
+               str1+='<td>  <input type="hidden" ><img src="http://www.blog.com/upload/sjian.png"  class="order" style="width: 20px;height: 20px; margin-left: -9px;" /></td>'
+               str1+='</tr>'
+               $(e).each(function (k,v) {
+                   str+='<tr>'
+                   str+='<td>'+v.id+'</td>'
+                   str+='<td>'+v.b_showname+'</td>'
+                   str+='<td>'+v.b_content+'</td>'
+                   str+='<td>'+v.b_ptime+'</td>'
+                   str+='<td>'+v.b_stas+'</td>'
+                   str+='<td><button class="btn am-btn-default" style="margin-right: 0px;"><a href="">审核通过</a></button>\n' +
+                       '                    <button class="btn am-btn-default" style="margin-right: 0px;"><a href="">审核不通过</a></button></td>'
+                   str+='</tr>'
+               })
+               $("#t").html(str)
+               $("#s").append(str1)
+
+           }
+       })
+   })
+</script>
+{include file="blog/booter" /}

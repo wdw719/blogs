@@ -1,0 +1,66 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<!--添加管理员-->
+<div class="layui-body"  >
+    <!-- 广告列表 -->
+    <div style="padding: 70px; margin-left: 0px;" class="container">
+        <table id="demo" class="table ">
+            <tr>
+                <td>ID</td>
+                <td>友情链接标题</td>
+                <td>友情链接</td>
+                <td><p style="margin-left: 30px;">操作</p></td>
+            </tr>
+            {volist name="res" id="vo"}
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.b_bltit}</td>
+                <td>{$vo.b_blink}</td>
+                <?php if($data['pid']==4){?>
+                <td style="">您没有权限操作</td>
+                <?php } ?>
+                <?php if($data['pid']==3){?>
+                <td style="">您没有权限操作</td>
+                <?php } ?>
+
+                <?php if($data['pid']==0){?>
+                <td>
+                    <button class="btn am-btn-default" style="margin-right: 60px;"><a href="/bldel?id={$vo.id}">删除</a></button>
+                </td>
+                <?php } ?>
+
+                <?php if($data['pid']==1){?>
+                <td>
+                    <button class="btn am-btn-default" style="margin-right: 60px;"><a href="/bldel?id={$vo.id}">删除</a></button>
+                </td>
+                <?php } ?>
+
+                <?php if($data['pid']==2){?>
+                <td>
+                    <button class="btn am-btn-default" style="margin-right: 60px;"><a href="/bldel?id={$vo.id}">删除</a></button>
+                </td>
+                <?php } ?>
+
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</div>
+
+{include file="blog/booter" /}

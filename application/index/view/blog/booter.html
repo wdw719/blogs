@@ -1,0 +1,43 @@
+</div>
+  
+  <div class="layui-footer">
+
+  </div>  
+</div>
+
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+</script>
+<script type="text/javascript">
+        var in_1 = document.getElementById('input');
+        function showTime(){
+            var date = new Date();
+            var week = date.getDay();
+            var weekday;
+            switch(week){
+                case 0: weekday = '星期天';break;
+                case 1: weekday = '星期一';break;
+                case 2: weekday = '星期二';break;
+                case 3: weekday = '星期三';break;
+                case 4: weekday = '星期四';break;
+                case 5: weekday = '星期五';break;
+                case 6: weekday = '星期六';break;
+            }
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            var in_1 = document.getElementById('input');
+            in_1.value = year + '年' + month + "月" + day + '日'+' ' + weekday + ' ' + hour + ':' + minute + ':' + second;
+            setTimeout(showTime,1000);
+        }
+        showTime();
+    </script>
+</body>
+</html>

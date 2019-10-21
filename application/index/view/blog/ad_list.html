@@ -1,0 +1,42 @@
+{include file="blog/b_rbac" /}
+<?php echo $data['alert_name']."您好"; ?>
+<div class="container" style="margin-top: 10px;">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>账号</th>
+            <th>角色</th>
+            <th>手机号</th>
+            <th>职位</th>
+            <th>部门</th>
+            <th>创建时间</th>
+            <th>修改时间</th>
+            <th>操作</th>
+        </tr>
+
+
+    </table>
+
+</div>
+<script>
+    $('.del').click(function(){
+        var id = $(this).parents('tr').attr('data-id');
+        var that = $(this)
+        // alert(id)
+        $.ajax({
+            url:"/tp5.1/public/adminDel",
+            type:"post",
+            dataType:"json",
+            data: {
+                id:id
+            },
+            success: function(e){
+                if(e.status){
+                    alert(e.msg)
+                    that.parents('tbody').remove();
+                }
+            }
+        })
+    })
+</script>
+{include file="blog/booter" /}

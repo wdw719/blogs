@@ -1,0 +1,166 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<!--添加管理员-->
+<div class="layui-body" >
+    <!-- 用户列表 -->
+
+    <div style="padding: 50px; margin-left: 0px;" class="container">
+        <div style="padding: 30px;" class="container">
+            <table id="demo" class="table ">
+                <tr>
+                    <td>ID</td>
+                    <td>邮箱</td>
+                    <td>手机号</td>
+                    <td>登录名称</td>
+                    <td>显示名称</td>
+                    <td>状态</td>
+                    <td><p style="margin-left: 30px;">操作</p></td>
+                </tr>
+                {volist name="res" id="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.b_email}</td>
+                    <td>{$vo.b_phone}</td>
+                    <td>{$vo.b_logname}</td>
+                    <td>{$vo.b_showname}</td>
+                    <td>
+                        {eq name="vo.b_sta" value="1"}
+                        已激活
+                        {else/}
+                        未激活
+                        {/eq}
+                    </td>
+                    <?php if($data['pid']==3){?>
+                    <td><button class="btn am-btn-default" ><a href="">编辑</a></button>
+                    <td style="">您没有权限操作</td>
+                    <?php } ?>
+                    <?php if($data['pid']==4){?>
+                    <td style="">您没有权限操作</td>
+                    <?php } ?>
+                    <?php if($data['pid']==2){?>
+                    {eq name="vo.b_snum" value="1"}
+                    <button class="btn am-btn-default debtn" id="{$vo.id}" style="margin-right: 0px;">解禁</button>
+                    {else/}
+                    <button class="btn am-btn-default fbtn"  data-id="{$vo.id}" style="margin-right: 0px;">禁言</button>
+                    {/eq}
+                    <button class="btn am-btn-default fnum"   ids="{$vo.id}" style="margin-right:0px;">封号</button>
+
+                    <button class="btn am-btn-default" style="margin-right: 60px;"><a href="/rdel?id={$vo.id}">删除</a></button>
+                    </td>
+                    <?php } ?>
+                    <?php if($data['pid']==0){?>
+                    <td>
+                        {eq name="vo.b_snum" value="1"}
+                        <button class="btn am-btn-default debtn" id="{$vo.id}" style="margin-right: 0px;">解禁</button>
+                        {else/}
+                        <button class="btn am-btn-default fbtn"  data-id="{$vo.id}" style="margin-right: 0px;">禁言</button>
+                        {/eq}
+                        <button class="btn am-btn-default fnum"   ids="{$vo.id}" style="margin-right:0px;">封号</button>
+
+                        <button class="btn am-btn-default" style="margin-right: 60px;"><a href="/rdel?id={$vo.id}">删除</a></button>
+                    </td>
+                    <?php } ?>
+                    <?php if($data['pid']==1){?>
+                    <td>
+                        {eq name="vo.b_snum" value="1"}
+                        <button class="btn am-btn-default debtn" id="{$vo.id}" style="margin-right: 0px;">解禁</button>
+                        {else/}
+                        <button class="btn am-btn-default fbtn"  data-id="{$vo.id}" style="margin-right: 0px;">禁言</button>
+                        {/eq}
+                        <button class="btn am-btn-default fnum"   ids="{$vo.id}" style="margin-right:0px;">封号</button>
+
+                        <button class="btn am-btn-default" style="margin-right: 60px;"><a href="/rdel?id={$vo.id}">删除</a></button>
+                    <?php } ?>
+                </tr>
+                {/volist}
+            </table>
+            <div style="margin-left: 790px;">{$res|raw}</div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+    //禁言操作
+    $(".fbtn").click(function () {
+        var id=$(this).attr("data-id")
+       if(confirm("你确定要禁言此账号吗?")){
+            $.ajax({
+                url:'/bseal',
+                dataType:'json',
+                data:{id:id},
+                success:function (e) {
+                    if(e.code==200){
+
+                        alert(e.msg)
+                        location.href='/bue'
+                    }else{
+
+                        alert(e.msg)
+                        location.href='/bue'
+                    }
+                }
+            })
+       }
+    })
+    //解除禁言操作
+    $(".debtn").click(function () {
+        var id=$(this).attr("id")
+        if(confirm("你确定要解禁此账号吗?")){
+            $.ajax({
+                url:'/bdseal',
+                dataType:'json',
+                data:{id:id},
+                success:function (e) {
+                    if(e.code==200){
+
+                        alert(e.msg)
+                        location.href='/bue'
+                    }else{
+
+                        alert(e.msg)
+                        location.href='/bue'
+                    }
+                }
+            })
+        }
+    })
+
+    //封号操作
+    $(".fnum").click(function () {
+        var id=$(this).attr("ids")
+        if(confirm("你确定要封此账号吗?")){
+            $.ajax({
+                url:'/bfnum',
+                dataType:'json',
+                data:{id:id},
+                success:function (e) {
+                    if(e.code==200){
+                        alert(e.msg)
+                        location.href='/bue'
+                    }else{
+
+                        alert(e.msg)
+                        location.href='/bue'
+                    }
+                }
+            })
+        }
+    })
+</script>
+{include file="blog/booter" /}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>乐享博客后台登录</title>
+    <link href="favicon.ico" rel="shortcut icon" />
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style=" background: url(http://www.blog.com/LaDigue_EN-CA1115245085_1920x1080.jpg) no-repeat center center fixed; background-size: 100%;">
+   <form action="logins" method="post">
+    <div class="modal-dialog" style="margin-top: 10%;">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title text-center" id="myModalLabel">后台登录</h4>
+            </div>
+            <div class="modal-body" id = "model-body">
+                <div class="form-group col-lg-12">
+
+                    <input type="text" class="form-control user" name="b_username" placeholder="用户名" autocomplete="off"><p id="emails"></p>
+                </div>
+                <div class="form-group col-lg-12">
+
+                    <input type="password" class="form-control pwd" placeholder="密码" autocomplete="off"  name="b_password">   <p id="pwds"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-control bts">登录</button>
+                </div>
+                <div class="form-group col-lg-4">
+                   <a href="">忘记密码</a>
+               </div>
+               <div class="form-group col-lg-4">
+               <a href="">立即注册</a>
+               </div>
+           </div>
+       </div>
+   </form>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+    //用户名限制
+    $(".user").blur(function () {
+        //验证qq邮箱
+        var qq_email=/^\d{5,}@qq(\.)com$/
+        var email=$(this).val()
+        if(email==''){
+            $("#emails").html("用户名不能为空");
+            $("#emails").css("color","red");
+            $(".bts").attr("disabled","disabled");
+        }else{
+            if(qq_email.test(email)){
+                $("#emails").html("用户名格式正确");
+                $("#emails").css("color","green");
+                $(".bts").removeAttr("disabled");
+            }else{
+                $("#emails").html("用户名不正确");
+                $("#emails").css("color","red");
+                $(".bts").attr("disabled","disabled");
+            }
+        }
+
+    })
+    //密码限制
+    $(".pwd").blur(function () {
+        var pwd_d=/^\w{6,30}$/
+        var pwdc=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{6,30}$/
+        var pwd=$(this).val()
+
+        if(pwd==""){
+            $("#pwds").html("密码不能为空");
+            $("#pwds").css("color","red");
+            $(".bts").attr("disabled","disabled");
+        }else{
+            if(pwd_d.test(pwd)){
+                if(pwdc.test(pwd)){
+                    $("#pwds").html("密码正确");
+                    $("#pwds").css("color","green");
+                    $(".bts").removeAttr("disabled");
+                }else{
+                    $("#pwds").html("密码格式不正确");
+                    $("#pwds").css("color","red");
+                    $(".bts").attr("disabled","disabled");
+                }
+            }else{
+                alert("密码必须在6-30位并且不能有字符")
+            }
+        }
+    })
+</script>

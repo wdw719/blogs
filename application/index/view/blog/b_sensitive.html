@@ -1,0 +1,40 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<!--添加管理员-->
+<div class="layui-body"  >
+    <!-- 敏感词管理 -->
+    <div style="padding: 50px; margin-left: 200px;" class="container">
+        <form action="/bsadd" method="post" enctype="multipart/form-data">
+            <div class="container bts">
+                <h3 >添加敏感词 </h3>
+
+                <div class="form-group col-lg-3">
+                    <label >敏感词:</label>
+                    <td class="b"> <input type="text"  name="sen_word" class="form-control" ></td>
+                    <br>
+                    <td > <input type="submit" id=""  class="btn btn-info btn-lg " value="添加敏感词" ></td>
+                </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+{include file="blog/booter" /}

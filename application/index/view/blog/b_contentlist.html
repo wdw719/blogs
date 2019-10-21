@@ -1,0 +1,48 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<!---->
+<div class="layui-body"  >
+    <!-- 评论审核通过列表 -->
+    <div style="padding: 90px; margin-left: 0px;" class="container">
+        <table id="demo" class="table ">
+            <tr>
+                <td>ID</td>
+                <td ><p style="margin-left: 15px;">评论人</p></td>
+                <td><p style="margin-left: 30px;">评论内容</p></td>
+                <td>评论时间</td>
+                <td>评论状态</td>
+            </tr>
+            {volist name="red" id="vo"}
+            <tr>
+                <td>{$vo.id}</td>
+                <td><p style="margin-left: 10px;">{$vo.b_showname}</p></td>
+                <td>{$vo.b_content}</td>
+                <td>{$vo.b_ptime}</td>
+                <td>{eq name="vo.b_stas" value="1"}
+                    审核通过
+                    {else/}
+                    未通过审核
+                    {/eq}</td>
+            </tr>
+            {/volist}
+        </table>
+        <div style="margin-left: 800px;">{$red|raw}</div>
+    </div>
+</div>
+{include file="blog/booter" /}

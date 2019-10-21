@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Material Portfolio Template Demo</title>
+    <meta name="description" content="Demo of Material design portfolio template"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://www.blog.com/static/qiantai/styles/main.css" rel="stylesheet">
+    <style>
+        .abc:hover{
+            border-bottom: 2px solid yellow;
+        }
+        .imd{
+            border-radius: 75%;
+            background-size: cover;
+            height: 120px;
+            width: 120px;
+            margin: 15px auto;
+        }
+        .im{
+            border-radius: 75%;
+            background: url(http://www.blog.com/wlogin.png) 50% no-repeat;
+            background-size: cover;
+            height: 120px;
+            width: 120px;
+            margin: 15px auto;
+        }
+        .site-logo {
+            border-radius: 50%;
+            background: url(http://www.blog.com/wlogin.png) 50% no-repeat;
+            background-size: cover;
+            height: 120px;
+            width: 120px;
+            margin: 15px auto;
+        }
+        /*.a{*/
+        /*display: flex;*/
+        /*}*/
+        /*.b{*/
+        /*position: absolute;*/
+        /*margin-left: 70%;*/
+        /*}*/
+        /*.c{*/
+        /*position: relative;*/
+        /*margin-left: 75%;*/
+        /*}*/
+
+    </style>
+</head>
+<body id="top">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="/write" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i class="material-icons">mail</i></a>
+    <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
+        <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">
+     {if condition="empty($name)"}
+            <a href="#"><div class="site-logo"><img src="http://www.blog.com/wlogin.png" alt="" style="width: 120px;height: 120px;border-radius: 50%;"></div></a> <span class="site-description" style="margin-top: 10px;">未登录</span>的点点滴滴多地方辅导费</span></div>
+        {else /}
+        <a href=""><div class="site-logo">
+            {if condition="empty($name.b_pic)"}
+            <img src="http://www.blog.com/wlogin.png" alt="" style="width: 120px;height: 120px;border-radius: 50%;">
+            {else /}
+            <img src="{$name.b_pic}" alt="" style="width: 120px;height: 120px;border-radius: 50%;">{/if}
+
+        </div></a><span style="margin-left: 110px">昵称：{$name.b_showname}</span><span class="site-description">
+    </span><p style="margin-left: 60px;"><span style="margin-right: 60px;">关注：{$count}</span><span style="margin-right: 60px;">粉丝：{$counts}</span>博龄：{$time}天</p></span></div>{/if}
+
+<div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+        <a class="mdl-navigation__link" href="/home" ><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">首页</span</a>
+        {if condition="empty($name)"}
+        <a class="mdl-navigation__link nameone" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的博文</span></a>
+        <a class="mdl-navigation__link nametwo"  href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
+        <a class="mdl-navigation__link namethree" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
+        <a class="mdl-navigation__link namefour" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+        <a class="mdl-navigation__link namefive" href="#"><span class="abc" style=""><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></span></a>
+        {else /}
+        <a class="mdl-navigation__link" href="/home"></a>
+        <a class="mdl-navigation__link " href="/myblog"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的博文</span></a>
+        <a class="mdl-navigation__link"  href="/mycol"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
+        <a class="mdl-navigation__link" href="/mycoll"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
+        <a class="mdl-navigation__link" href="/reco"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+        <a class="mdl-navigation__link" href="/emails"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></a>
+        {/if}
+        <a class="abc" href="/login" style="text-decoration: none;color: white;font-size: 14px;">登录</a> &nbsp; | &nbsp;
+        <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/reg">注册</a>            &nbsp; | &nbsp; &nbsp;
+        <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/quit">退出</a>
+    </nav>
+</div>
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="index.html">Home</a><a class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link" href="about.html">About</a><a class="mdl-navigation__link" href="contact.html">Contact</a>
+    </nav>
+</div>
+<main class="mdl-layout__content">
+    <div class="site-content">
+        <div class="container"><div class="mdl-grid site-max-width">
+
+        </div>
+            <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+            <table class="table">
+                <tr>
+                    <td>ID</td>
+                    <td>文章标题</td>
+                    <td>文章择要</td>
+                    <td>阅读全文链接</td>
+                    <td>文章被收藏数</td>
+                    <td>评论数</td>
+                    <td>操作</td>
+                </tr>
+                {volist name="coll" id="vo"}
+                <tr>
+                    <td>{$vo.co_id}</td>
+                    <td>{$vo.b_title}</td>
+                    <td>{$vo.b_digset}</td>
+                    <td><a href="/manys?id={$vo.b_id}">查看全文</a></td>
+                    <td>{$vo.b_colnum}</td>
+                    <td>{$vo.b_con}</td>
+                    <td><a href="/delcoll?id={$vo.co_id}&b_id={$vo.b_id}">删除收藏</a></td>
+                </tr>
+                {/volist}
+            </table>
+            {$coll|raw}
+            <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+        </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(".nameone").click(function () {
+        alert("您还没有登录")
+    })
+    $(".nametwo").click(function () {
+        alert("您还没有登录")
+    })
+    $(".namethree").click(function () {
+        alert("您还没有登录")
+    })
+    $(".namefour").click(function () {
+        alert("您还没有登录")
+    })
+    $(".namefive").click(function () {
+        alert("您没有登录")
+    })
+</script>

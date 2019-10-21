@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<input type="text" id="uname" value="张三">
+<div>
+	<script id="container" name="content" type="text/plain">
+
+	    </script>
+</div>
+<input type="text" id="una" value="李四"><br>
+<input type="button" value="提交" id="sub" onclick="fun();">
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script src="http://www.01.com/jquery.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+     $(":button").click(function () {
+         var ue_val = ue.getContent();
+         ue_val.indexOf('<p>');
+         ue_val.lastIndexOf('</p>');
+         var df=ue_val.substring(ue_val.indexOf('<p>'),ue_val.lastIndexOf('</p>'))
+        $.ajax({
+			url:'dd.php',
+			data:{df:df},
+			type:'post',
+			dataType:'json',
+			success:function (e) {
+				console.log(e)
+            }
+		})
+     })
+
+
+</script>
+
+</body>
+</html>

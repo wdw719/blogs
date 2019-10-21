@@ -1,0 +1,86 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<div class="layui-body"  >
+    <!-- 全文信息 -->
+    <div style="padding: 70px; margin-left: 0px;" class="container">
+
+            {volist name="bque" id="vo"}
+        <!--标题-->
+             <h1 style="margin-left: 30px;">{$vo.b_title}</h1>
+        &nbsp;&nbsp;
+        <!--作者-->
+       <p style="margin-left: 900px;font-size: 20px;">作者：<font style="color: #00FF00">{$vo.b_author}</font></p>
+        <!--择要-->
+        <h2 style="margin-left: 40px;">{$vo.b_digset}</h2>
+        <!--内容-->&nbsp;&nbsp;
+       <h4 class="cn" onload="f()" data-s="{$vo.b_text}">{$vo.b_text}</h4>
+        <?php if($data['pid']==0){?>
+        <div style="padding: 80px; margin-left: 530px;margin-top: 80px;">
+            <form action="/bspass" method="post">
+                <input type="hidden" name="id" value="{$vo.b_id}">
+             <input type="button" data-id="{$vo.b_id}"  class="btn am-btn-default btl" value="审核通过">
+             <input type="submit" class="btn am-btn-default" value="审核不通过">
+            <select name="b_field" id="">
+                <option value="<?php echo $red[0]?>"><?php echo $red[0]?></option>
+                <option value="<?php echo $red[1]?>"><?php echo $red[1]?></option>
+                <option value="<?php echo $red[2]?>"><?php echo $red[2]?></option>
+                <option value="<?php echo $red[3]?>"><?php echo $red[3]?></option>
+            </select>
+            </form>
+
+            </div>
+
+        </div>
+        <?php } ?>
+            {/volist}
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        function f() {
+            var t=$(".cn").attr("data-s");
+            var regExp = /傻叉|毛泽东|傻逼|习近平/g;
+            t = t.replace(regExp,"<span style='color: yellow'>***</span>");
+            $(".cn").html(t)
+        }
+        window.onload=function(){
+            f();
+        }
+    })
+$(".btl").click(function () {
+     var id=$(this).attr("data-id")
+     $.ajax({
+         url:'/bpass',
+         dataType:'json',
+         data:{id:id},
+         success:function (e) {
+             if(e.code==200){
+                  alert(e.msg)
+                 location.href='/baduit'
+             }else{
+                 alert(e.msg)
+                 location.href='/baduit'
+             }
+         }
+     })
+})
+</script>
+{include file="blog/booter" /}

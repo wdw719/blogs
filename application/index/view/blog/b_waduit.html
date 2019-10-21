@@ -1,0 +1,46 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<!---->
+<div class="layui-body"  >
+    <!-- 博文未审核列表 -->
+    <div style="padding: 90px; margin-left: 0px;" class="container">
+        <table id="demo" class="table ">
+            <tr>
+                <td>ID</td>
+                <td ><p style="margin-left: 15px;">博文标题</p></td>
+                <td><p style="margin-left: 30px;">博文作者</p></td>
+                <td>博文简介</td>
+                <td><p style="margin-left: 20px;">操作</p></td>
+            </tr>
+            {volist name="red" id="vo"}
+            <tr>
+                <td>{$vo.b_id}</td>
+                <td><p style="margin-left: 10px;">{$vo.b_title}</p></td>
+                <td>{$vo.b_author}</td>
+                <td>{$vo.b_article}</td>
+                <td>
+                    <button class="btn am-btn-default" style="margin-right: 0px;"><a href="/bque?id={$vo.b_id}">查看全文</a></button>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+        <div style="margin-left: 790px;">{$red|raw}</div>
+    </div>
+</div>
+{include file="blog/booter" /}

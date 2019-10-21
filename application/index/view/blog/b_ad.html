@@ -1,0 +1,71 @@
+{include file="blog/main" /}
+<?php
+            if($data['pid']==0){
+                echo $data['alert_name'].$data['work']."您好";
+            }
+            if($data['pid']==1){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                                      if($data['pid']==2){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==3){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+                        if($data['pid']==4){
+           echo $data['alert_name'].$data['work']."您好";
+            }
+?>
+<!--添加管理员-->
+<div class="layui-body"  >
+    <!-- 广告添加 -->
+    <div style="padding: 50px; margin-left: 200px;" class="container">
+        <form action="/addo" method="post" enctype="multipart/form-data">
+            <div class="container bts">
+                <h3 >广告添加 </h3>
+
+                <div class="form-group col-lg-3">
+                    <label >广告标题:</label>
+                    <td class="b"> <input type="text" id="tit" name="b_title" class="form-control" ></td>
+                    <label >广告链接:</label>
+                    <td class="b"> <input type="text" id="link" name="b_adlink" class="form-control" ></td>
+                    <label >广告图片:</label>
+                    <td > <input type="file"  name="b_img" class="" ></td>
+
+                    <br>
+                    <td > <input type="submit" id="" name="" class="btn btn-info btn-lg " value="添加广告" ></td>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+    //广告链接
+    $("#link").blur(function () {
+        var link=$(this).val()
+        var links=/^[\w\W]{0,500}$/
+        if(link==''){
+            alert("不能为空")
+        }
+        if(links.test(link)){
+
+        }else{
+            alert("广告链接不能超过个500字符")
+        }
+    })
+    //广告标题
+    $("#tit").blur(function () {
+        var tit=$(this).val()
+        var tits=/^[\u4e00-\u9fa5][\w\W]{0,200}$/
+        if(tit==''){
+            alert("不能为空");return;
+        }
+        if(tits.test(tit)){
+        }else{
+            alert("不能超过200个字符");return;
+        }
+    })
+</script>
+{include file="blog/booter" /}

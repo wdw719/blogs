@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Material Portfolio Template Demo</title>
+    <meta name="description" content="Demo of Material design portfolio template"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://www.blog.com/static/qiantai/styles/main.css" rel="stylesheet">
+    <style>
+        .abc:hover{
+            border-bottom: 2px solid yellow;
+        }
+        .imd{
+            border-radius: 75%;
+            background-size: cover;
+            height: 120px;
+            width: 120px;
+            margin: 15px auto;
+        }
+        .im{
+            border-radius: 75%;
+            background: url(http://www.blog.com/wlogin.png) 50% no-repeat;
+            background-size: cover;
+            height: 120px;
+            width: 120px;
+            margin: 15px auto;
+        }
+        .site-logo {
+            border-radius: 50%;
+            background: url(http://www.blog.com/wlogin.png) 50% no-repeat;
+            background-size: cover;
+            height: 120px;
+            width: 120px;
+            margin: 15px auto;
+        }
+        /*.a{*/
+            /*display: flex;*/
+        /*}*/
+        /*.b{*/
+            /*position: absolute;*/
+            /*margin-left: 70%;*/
+        /*}*/
+        /*.c{*/
+            /*position: relative;*/
+            /*margin-left: 75%;*/
+        /*}*/
+
+    </style>
+</head>
+<body id="top">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="/write" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i class="material-icons">mail</i></a>
+    <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
+        <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">
+     {if condition="empty($name)"}
+            <a href="#"><div class="site-logo"><img src="http://www.blog.com/wlogin.png" alt="" style="width: 120px;height: 120px;border-radius: 50%;"></div></a> <span class="site-description" style="margin-top: 10px;">未登录</span></span></div>
+        {else /}
+        <a href=""><div class="site-logo">
+            {if condition="empty($name.b_pic)"}
+            <img src="http://www.blog.com/wlogin.png" alt="" style="width: 120px;height: 120px;border-radius: 50%;">
+            {else /}
+            <img src="{$name.b_pic}" alt="" style="width: 120px;height: 120px;border-radius: 50%;">{/if}
+
+        </div></a><span style="margin-left: 110px">昵称：{$name.b_showname}</span><span class="site-description">
+    </span><p style="margin-left: 60px;"><span style="margin-right: 60px;">关注：{$count}</span><span style="margin-right: 60px;">粉丝：{$counts}</span>博龄：{$time}天</p></span></div>{/if}
+
+        <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
+            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                <a class="mdl-navigation__link" href="/home" ><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">首页</span</a>
+                {if condition="empty($name)"}
+                <a class="mdl-navigation__link nameone" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的博文</span></a>
+                <a class="mdl-navigation__link nametwo"  href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
+                <a class="mdl-navigation__link namethree" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
+                <a class="mdl-navigation__link namefour" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+                <a class="mdl-navigation__link namefive" href="#"><span class="abc" style=""><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></span></a>
+                {else /}
+                <a class="mdl-navigation__link" href="/home"></a>
+                <a class="mdl-navigation__link " href="/myblog"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的博文</span></a>
+                <a class="mdl-navigation__link"  href="/mycol"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
+                <a class="mdl-navigation__link" href="/mycoll"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
+                <a class="mdl-navigation__link" href="/reco"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+                <a class="mdl-navigation__link" href="/emails"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></a>
+                {/if}
+                <a class="abc" href="/login" style="text-decoration: none;color: white;font-size: 14px;">登录</a> &nbsp; | &nbsp;
+                <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/reg">注册</a>            &nbsp; | &nbsp; &nbsp;
+                <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/quit">退出</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+        <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font"><a class="mdl-navigation__link" href="index.html">Home</a><a class="mdl-navigation__link" href="portfolio.html">Portfolio</a><a class="mdl-navigation__link" href="about.html">About</a><a class="mdl-navigation__link" href="contact.html">Contact</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="site-content">
+            <div class="container"><div class="mdl-grid site-max-width">
+
+            </div>
+                <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+                <section class="section--center mdl-grid site-max-width" style="height: auto;">
+                    <div style="width: 1000px;" class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
+                        <div class="mdl-card__title" >
+                            <div><img src="{$blog.b_pic}" style="width:60px;height: 60px; border-radius: 50%;" alt=""></div>
+                            <div>
+                                <p style="font-weight: 400; font-size: 14px;" class="mdl-card__title-text">{$blog.b_author}</p>
+                                <p style="  font-weight: 400; font-size: 12px;margin-top: 30px" class="mdl-card__title-text">{$blog.b_createtime}</p>
+                            </div>
+                            <div style="width: 200px;margin-left: 50%">
+                                浏览：{$blog.b_pv} 评论：{$blog.b_con}
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions  mdl-card--border">
+                            <div class="mdl-card__supporting-text" >
+                                <h2 style="margin-left: 30px; font-weight: 400; margin-bottom: 10px; " class="mdl-card__title-text"><span style="font-size: 25px;">{$blog.b_title}</span></h2>
+                                <h5 style="font-weight: 500; font-size: 20px; overflow-y: scroll;">{$blog.b_text}</h5>
+                            </div>
+
+                        </div>
+                        <div class="mdl-card__actions  mdl-card--border" >
+                    </div>
+                        <div class="a">
+                            <div class="b">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1524625953372" style="position: absolute;right: 50px;">
+
+                                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+
+                                </div>
+                                {if condition="empty($name)"}
+                                {if condition="empty($zen)"}
+                                <img  class="zanthree"   style="width: 30px;height: 30px;margin-left: 70%;" src="http://www.blog.com/zan1.png" alt=""><span class="zans" hidden>0</span>
+                                <img class="fanthree" data-fan="0" fzan-id="{$blog.b_id}"   style="width: 30px;height: 30px;" src="http://www.blog.com/cai1.png" alt=""><span class="fans" hidden>0</span>
+                                {else /}
+                                {if condition="$vs.zan_sta==1"}
+                                <img  class="zantwo" style="width: 30px;height: 30px;margin-left: 70%;" src="http://www.blog.com/zan.png" alt=""><span class="zans" hidden >0</span>
+                                <img class="zantwo"    style="width: 30px;height: 30px;" src="http://www.blog.com/cai1.png" alt=""><span class="fans" hidden>0</span>
+                                {else /}
+                                <img  class="fantwo" style="width: 30px;height: 30px;margin-left: 70%;" src="http://www.blog.com/zan1.png" alt=""><span class="zans" hidden >0</span>
+                                <img class="fantwo"    style="width: 30px;height: 30px;" src="http://www.blog.com/cai.png" alt=""><span class="fans" hidden>0</span>
+
+                                {/if}
+                                {/if}
+
+                                {else /}
+
+                                {if condition="empty($zen)"}
+                                <img  class="zan"  name-id="{$name.id}" zan-id="{$blog.b_id}" style="width: 30px;height: 30px;margin-left: 70%;" src="http://www.blog.com/zan1.png" alt=""><span class="zans" hidden>0</span>
+                                <img class="fan" data-fan="0" fzan-id="{$blog.b_id}"  fname-id="{$name.id}"  style="width: 30px;height: 30px;" src="http://www.blog.com/cai1.png" alt=""><span class="fans" hidden>0</span>
+                                {else /}
+                                {if condition="$vs.zan_sta==1"}
+                                <img  class="zantwo" style="width: 30px;height: 30px;margin-left: 70%;" src="http://www.blog.com/zan.png" alt=""><span class="zans" hidden >0</span>
+                                <img class="zantwo"    style="width: 30px;height: 30px;" src="http://www.blog.com/cai1.png" alt=""><span class="fans" hidden>0</span>
+                                {else /}
+                                <img  class="fantwo" style="width: 30px;height: 30px;margin-left: 70%;" src="http://www.blog.com/zan1.png" alt=""><span class="zans" hidden >0</span>
+                                <img class="fantwo"    style="width: 30px;height: 30px;" src="http://www.blog.com/cai.png" alt=""><span class="fans" hidden>0</span>
+
+
+                                {/if}
+                                {/if}
+
+                                {/if}
+                                <!--收藏-->
+                                {if condition="empty($name)"}
+                                <img class="collthree" src="http://www.blog.com/show1.png" title="收藏" style="width: 30px;height: 30px;" alt="">
+                                {else /}
+
+                                {if condition="empty($coll)"}
+                                <img data-col="0" blog-id="{$blog.b_id}" names-id="{$name.id}" class="coll" src="http://www.blog.com/show1.png" title="收藏" style="width: 30px;height: 30px;" alt="">
+                                {else /}
+
+                                <img class="colltwo" src="http://www.blog.com/show.png" title="已收藏" style="width: 30px;height: 30px;" alt="">
+                                {/if}
+                                {/if}
+                                <!--关注-->
+                                {if condition="empty($name)"}
+                                <span style="color:blue;" class="attenthree">关注我</span>
+                                {else /}
+                                {if condition="$name.id eq $blog.userid"}
+                                <span style="color:blue;display: none;" class="attenthree">关注我</span>
+                                {else /}
+                                {if condition="empty($name)"}
+                                <span style="color:blue;" class="attenthree">关注我</span>
+                                {else /}
+
+                                {if condition="$att==false"}
+                                <span style="color:blue;" data-att="0" class="atten" data-user="{$blog.userid}" data-useid="{$name.id}"  data-g="{$blog.b_id}">关注我</span>
+
+                                {else /}
+
+                                <span style="color:brown;" class="attentwo">已关注</span>
+                                {/if}
+                                {/if}
+                                {/if}
+                                {/if}
+
+                        </div>
+                        {if condition="empty($blist)"}{else /}
+                        {if condition="$countss < 3"}
+                        {volist name="blist" id="v"}
+                        <div>
+                            <div>
+                                <img src="{$v.b_img}" style="width: 50px;height: 50px;border-radius:50%; " alt="">
+
+                                <span>{$v.b_names}</span>
+                                <span>{$v.b_ptime}</span>
+                            </div>
+                            <div>
+                                <span style="margin-left: 70px;">{$v.b_content}</span>
+                            </div>
+                            {/volist}
+                            {else /}
+                            {volist name="data" id="v"}
+
+                            <div>
+                                <div>
+                                    <img src="{$v.b_img}" style="width: 50px;height: 50px;border-radius:50%; " alt="">
+
+                                    <span>{$v.b_names}</span>
+                                    <span>{$v.b_ptime}</span>
+                                </div>
+                                <div>
+                                    <span style="margin-left: 70px;">{$v.b_content}</span>
+                                </div>
+                                {/volist}
+                                {/if}
+                        {/if}
+                            <div>
+                                <!--评论-->
+                        <textarea id="con"  placeholder="您有什么想说的吗" style="width: 400px; height: 50px; margin-left: 40px;"  ></textarea>
+
+                                {if condition="empty($name)"}{else /}    <input type="hidden" data-id="{$name.id}" class="id">{/if}
+                                <input type="hidden" v-id="{$id}" class="d">
+                            <input type="hidden" data-ids="{$blog.b_id}" class="ids">
+                            <input type="hidden" data-con="{$blog.b_con}" class="con">
+                        <button class="btn btn-success bts">发表</button></div>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                <div class="homepage-footer">
+                    <section class="mdl-grid site-max-width">
+                        <div class="mdl-cell mdl-card mdl-cell--8-col mdl-cell--4-col-tablet  mdl-shadow--4dp portfolio-card">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Testimonials</h2>
+                            </div>
+                            <ul class="demo-list-three mdl-list">
+                                <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">person</i>
+                <span>Amazing people, always ready to help!</span>
+                <span class="mdl-list__item-text-body">
+                  Bryan Cranston, CEO, Amazing.com
+                </span>
+              </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons  mdl-list__item-avatar">person</i>
+                <span>Awesome work, they can do almost anything..</span>
+                <span class="mdl-list__item-text-body">
+                Aaron Paul, Marketing Lead, Awesome.com
+                </span>
+              </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
+                            <div class="mdl-card__title mdl-card--expand">
+                                <h4>
+                                    Featured event:<br>
+                                    Community Meetup
+                                    May 24, 2018<br>
+                                    7-11pm
+                                </h4>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                                    Add to Calendar
+                                </a>
+                                <div class="mdl-layout-spacer"></div>
+                                <i class="material-icons">event</i>
+                            </div>
+                        </div>
+                    </section>
+                </div></div>
+        </div>
+
+        <footer class="mdl-mini-footer">
+            <div class="footer-container">
+                <div class="mdl-logo">&copy; Unitiled. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    //评论
+    $(".bts").click(function () {
+        var con=$("#con").val()
+        var id=$(".id").attr('data-id');//用户的id
+        var ids=$(".ids").attr('data-ids');//文章的b_id
+        var b_con=$(".con").attr('data-con');//评论量
+
+        $.ajax({
+            url:'/content',
+            data:{id:id,con:con,ids:ids,b_con:b_con},
+            type:'post',
+            dataType:'json',
+            success:function (e) {
+                if(e.code==200){
+                    alert(e.msg)
+                    location.href='/show?id='+ids
+                }else if(e.code==4001){
+                    alert(e.msg)
+                    location.href='/show?id='+ids
+                }else{
+                    alert(e.msg)
+                    location.href='/show?id='+ids
+                }
+            }
+        })
+    })
+    //顶
+    $(".zan").click(function () {
+
+          var b_id=$(this).attr("zan-id")//文章的b_id
+          var id=$(this).attr("name-id"); //用户的id
+
+          $.ajax({
+              url:'/bea',
+              data:{id:b_id,ids:id},
+              type:'post',
+              dataType:'json',
+              success:function (e) {
+                  if(e.code==200){
+                      alert(e.msg)
+                      location.href='/show?id='+b_id
+                  }else if(e.code==4001){
+                      alert(e.msg)
+                      location.href='/show?id='+b_id
+                  }else{
+                      alert(e.msg)
+                      location.href='/show?id='+b_id
+                  }
+              }
+          })
+    })
+    //踩
+    $(".fan").click(function () {
+        var b_id=$(this).attr("fzan-id")//文章的b_id
+        var id=$(this).attr("fname-id"); //用户的id
+        $.ajax({
+            url:'/oppose',
+            data:{id:b_id,ids:id},
+            type:'post',
+            dataType:'json',
+            success:function (e) {
+                if(e.code==200){
+                    alert(e.msg)
+                    location.href='/show?id='+b_id
+                }else if(e.code==4001){
+                    alert(e.msg)
+                    location.href='/show?id='+b_id
+                }else{
+                    alert(e.msg)
+                    location.href='/show?id='+b_id
+                }
+            }
+        })
+    })
+
+    $(".bfan").click(function () {
+        alert("你已经支持了")
+    })
+    $(".bzan").click(function () {
+        alert("你已经反对过了")
+    })
+    $(".zantwo").click(function () {
+        alert("你已经支持了")
+    })
+    $(".fantwo").click(function () {
+        alert("你已经反对过了")
+    })
+    $(".colltwo").click(function () {
+        alert("你已经收藏过了");
+    })
+    $(".attentwo").click(function () {
+        alert("你已经关注了")
+    })
+    $(".collthree").click(function () {
+        alert("请先登录")
+    })
+    $(".zanthree").click(function () {
+        alert("请先登录")
+    })
+    $(".fanthree").click(function () {
+        alert("请先登录")
+    })
+    $(".attenthree").click(function () {
+        alert("请先登录")
+    })
+    $(".nameone").click(function () {
+        alert("您还没有登录")
+    })
+    $(".nametwo").click(function () {
+        alert("您还没有登录")
+    })
+    $(".namethree").click(function () {
+        alert("您还没有登录")
+    })
+    $(".namefour").click(function () {
+        alert("您还没有登录")
+    })
+    $(".namefive").click(function () {
+        alert("您还没有登录")
+    })
+    //收藏
+    $(".coll").click(function () {
+        var id=$(this).attr("names-id");//用户的id
+        var b_id=$(this).attr("blog-id");//文章的id
+
+        $.ajax({
+            url:'/coll',
+            type:'post',
+            data:{id:id,b_id:b_id},
+            dataType:'json',
+            success:function (e) {
+                if(e.code==200){
+                    alert(e.msg)
+                    location.href='/show?id='+b_id
+                }else if(e.code==4001){
+                    alert(e.msg)
+                    location.href='/show?id='+b_id
+                }else{
+                    alert(e.msg)
+                    location.href='/show?id='+b_id
+                }
+            }
+        })
+    })
+    //关注
+   $(".atten").click(function () {
+       var id=$(this).attr("data-useid")//登录用户的id
+       var userid=$(this).attr("data-user");//发表文章的用户id
+       var b_id=$(this).attr("data-g");//文章的id
+       $.ajax({
+           url:'/batt',
+           type:'post',
+           data:{id:id,userid:userid},
+           success:function (e) {
+               var d=JSON.parse(e)
+               if(e.code==200){
+                   alert(d.msg)
+                   location.href='/show'
+               }else if(d.code==4001){
+                   alert(d.msg)
+                   location.href='/show?id='+b_id
+               }else{
+                   alert(d.msg)
+                   location.href='/show?id='+b_id
+               }
+           }
+       })
+   })
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
