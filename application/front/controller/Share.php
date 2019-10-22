@@ -479,22 +479,37 @@ class Share extends Controller
     //我的博文
     public function bMyblog()
     {
-        $name=Session::get("names");
-        $id=$name['id'];
-        $bNew=new User();
-        $time=$_SESSION['think']['ucode'];
-        $tiems=$time['b_times'];
-        $nameid=$name['id'];      //查询用户的信息
-        $attnum=$bNew->numAtt($nameid);
-        $count=count($attnum);   //关注数
-        $pink=$bNew->numPink($nameid);
-        $counts=count($pink);    //粉丝数
-        $str=strtotime($tiems);
-        $s=(time()-$str)/86400;
-        $d=floor($s);
-         $myblog=$bNew->bMyblog($id);
+       if(empty($_SESSION['think']['ucode']))
+       {
+           echo "<script>alert('您还没有登录');location.href='/'</script>";
+           $name=Session::get("names");
+           $id=$name['id'];
+           $bNew=new User();
+           $nameid=$name['id'];      //查询用户的信息
+           $attnum=$bNew->numAtt($nameid);
+           $count=count($attnum);   //关注数
+           $pink=$bNew->numPink($nameid);
+           $counts=count($pink);    //粉丝数
+           $myblog=$bNew->bMyblog($id);
+           return view("b_myblog",['blog'=>$myblog,'name'=>$name,'count'=>$count,'counts'=>$counts]);
+       }else{
+           $name=Session::get("names");
+           $id=$name['id'];
+           $bNew=new User();
+           $time=$_SESSION['think']['ucode'];
+           $tiems=$time['b_times'];
+           $nameid=$name['id'];      //查询用户的信息
+           $attnum=$bNew->numAtt($nameid);
+           $count=count($attnum);   //关注数
+           $pink=$bNew->numPink($nameid);
+           $counts=count($pink);    //粉丝数
+           $str=strtotime($tiems);
+           $s=(time()-$str)/86400;
+           $d=floor($s);
+           $myblog=$bNew->bMyblog($id);
 
-       return view("b_myblog",['blog'=>$myblog,'name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+           return view("b_myblog",['blog'=>$myblog,'name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+       }
     }
     public function bMymany(){
         $name=Session::get("names");
@@ -506,40 +521,68 @@ class Share extends Controller
     //我的收藏
     public function bmyColl()
     {
-        $bNew=new User();
-        $name=Session::get("names");
-        $nameid=$name['id'];      //查询用户的信息
-        $attnum=$bNew->numAtt($nameid);
-        $count=count($attnum);   //关注数
-        $pink=$bNew->numPink($nameid);
-        $counts=count($pink);    //粉丝数
-        $id=$name['id'];
-        $coll=$bNew->bmyColl($id);
-        $time=$_SESSION['think']['ucode'];
-        $tiems=$time['b_times'];
-        $str=strtotime($tiems);
-        $s=(time()-$str)/86400;
-        $d=floor($s);
-        return view("b_mycoll",['name'=>$name,'coll'=>$coll,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+       if(empty($_SESSION['think']['ucode'])){
+           echo "<script>alert('您还没有登录');location.href='/'</script>";
+           $bNew=new User();
+           $name=Session::get("names");
+           $nameid=$name['id'];      //查询用户的信息
+           $attnum=$bNew->numAtt($nameid);
+           $count=count($attnum);   //关注数
+           $pink=$bNew->numPink($nameid);
+           $counts=count($pink);    //粉丝数
+           $id=$name['id'];
+           $coll=$bNew->bmyColl($id);
+           return view("b_mycoll",['name'=>$name,'coll'=>$coll,'count'=>$count,'counts'=>$counts]);
+       }else{
+           $bNew=new User();
+           $name=Session::get("names");
+           $nameid=$name['id'];      //查询用户的信息
+           $attnum=$bNew->numAtt($nameid);
+           $count=count($attnum);   //关注数
+           $pink=$bNew->numPink($nameid);
+           $counts=count($pink);    //粉丝数
+           $id=$name['id'];
+           $coll=$bNew->bmyColl($id);
+           $time=$_SESSION['think']['ucode'];
+           $tiems=$time['b_times'];
+           $str=strtotime($tiems);
+           $s=(time()-$str)/86400;
+           $d=floor($s);
+           return view("b_mycoll",['name'=>$name,'coll'=>$coll,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+       }
     }
     //我的评论
     public function bmyCot()
     {
-        $bNew=new User();
-        $name=Session::get("names");
-        $nameid=$name['id'];      //查询用户的信息
-        $attnum=$bNew->numAtt($nameid);
-        $count=count($attnum);   //关注数
-        $pink=$bNew->numPink($nameid);
-        $counts=count($pink);    //粉丝数
-        $id=$name['id'];
-        $data=$bNew->bMycots($id);
-        $time=$_SESSION['think']['ucode'];
-        $tiems=$time['b_times'];
-        $str=strtotime($tiems);
-        $s=(time()-$str)/86400;
-        $d=floor($s);
-       return view("b_mycot",['data'=>$data,'name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+        if(empty($_SESSION['think']['ucode'])){
+            echo "<script>alert('您还没有登录');location.href='/'</script>";
+            $bNew=new User();
+            $name=Session::get("names");
+            $nameid=$name['id'];      //查询用户的信息
+            $attnum=$bNew->numAtt($nameid);
+            $count=count($attnum);   //关注数
+            $pink=$bNew->numPink($nameid);
+            $counts=count($pink);    //粉丝数
+            $id=$name['id'];
+            $data=$bNew->bMycots($id);
+            return view("b_mycot",['data'=>$data,'name'=>$name,'count'=>$count,'counts'=>$counts]);
+        }else{
+            $bNew=new User();
+            $name=Session::get("names");
+            $nameid=$name['id'];      //查询用户的信息
+            $attnum=$bNew->numAtt($nameid);
+            $count=count($attnum);   //关注数
+            $pink=$bNew->numPink($nameid);
+            $counts=count($pink);    //粉丝数
+            $id=$name['id'];
+            $data=$bNew->bMycots($id);
+            $time=$_SESSION['think']['ucode'];
+            $tiems=$time['b_times'];
+            $str=strtotime($tiems);
+            $s=(time()-$str)/86400;
+            $d=floor($s);
+            return view("b_mycot",['data'=>$data,'name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+        }
     }
     //删除评论
     public function bDelcon()
@@ -587,40 +630,68 @@ class Share extends Controller
     //我的推荐
     public function bReco()
     {
-        $bNew=new User();
-        $name=Session::get("names");
-        $nameid=$name['id'];      //查询用户的信息
-        $attnum=$bNew->numAtt($nameid);
-        $count=count($attnum);   //关注数
-        $pink=$bNew->numPink($nameid);
-        $counts=count($pink);    //粉丝数
-        $id=$name['id'];
-        $data=$bNew->bReco($id);
-        $time=$_SESSION['think']['ucode'];
-        $tiems=$time['b_times'];
-        $str=strtotime($tiems);
-        $s=(time()-$str)/86400;
-        $d=floor($s);
-        return view("b_reco",['name'=>$name,'data'=>$data,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+       if(empty($_SESSION['think']['ucode'])){
+           echo "<script>alert('您还没有登录');location.href='/'</script>";
+           $bNew=new User();
+           $name=Session::get("names");
+           $nameid=$name['id'];      //查询用户的信息
+           $attnum=$bNew->numAtt($nameid);
+           $count=count($attnum);   //关注数
+           $pink=$bNew->numPink($nameid);
+           $counts=count($pink);    //粉丝数
+           $id=$name['id'];
+           $data=$bNew->bReco($id);
+           return view("b_reco",['name'=>$name,'data'=>$data,'count'=>$count,'counts'=>$counts]);
+       }else{
+           $bNew=new User();
+           $name=Session::get("names");
+           $nameid=$name['id'];      //查询用户的信息
+           $attnum=$bNew->numAtt($nameid);
+           $count=count($attnum);   //关注数
+           $pink=$bNew->numPink($nameid);
+           $counts=count($pink);    //粉丝数
+           $id=$name['id'];
+           $data=$bNew->bReco($id);
+           $time=$_SESSION['think']['ucode'];
+           $tiems=$time['b_times'];
+           $str=strtotime($tiems);
+           $s=(time()-$str)/86400;
+           $d=floor($s);
+           return view("b_reco",['name'=>$name,'data'=>$data,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+       }
     }
     //信息设置
     public function bEmails()
     {
-        $bNew=new User();
-        $name=Session::get("names");
-        $nameid=$name['id'];      //查询用户的信息
-        $attnum=$bNew->numAtt($nameid);
-        $count=count($attnum);   //关注数
-        $pink=$bNew->numPink($nameid);
-        $counts=count($pink);    //粉丝数
-        $id=$name['id'];
-        $data=$bNew->bUserinfo($id);
-        $time=$_SESSION['think']['ucode'];
-        $tiems=$time['b_times'];
-        $str=strtotime($tiems);
-        $s=(time()-$str)/86400;
-        $d=floor($s);
+      if(empty($_SESSION['think']['ucode'])){
+          echo "<script>alert('您还没有登录');location.href='/'</script>";
+          $bNew=new User();
+          $name=Session::get("names");
+          $nameid=$name['id'];      //查询用户的信息
+          $attnum=$bNew->numAtt($nameid);
+          $count=count($attnum);   //关注数
+          $pink=$bNew->numPink($nameid);
+          $counts=count($pink);    //粉丝数
+          $id=$name['id'];
+          $data=$bNew->bUserinfo($id);
+          return view("b_setemail",['name'=>$name,'data'=>$data,'count'=>$count,'counts'=>$counts]);
+      }else{
+          $bNew=new User();
+          $name=Session::get("names");
+          $nameid=$name['id'];      //查询用户的信息
+          $attnum=$bNew->numAtt($nameid);
+          $count=count($attnum);   //关注数
+          $pink=$bNew->numPink($nameid);
+          $counts=count($pink);    //粉丝数
+          $id=$name['id'];
+          $data=$bNew->bUserinfo($id);
+          $time=$_SESSION['think']['ucode'];
+          $tiems=$time['b_times'];
+          $str=strtotime($tiems);
+          $s=(time()-$str)/86400;
+          $d=floor($s);
           return view("b_setemail",['name'=>$name,'data'=>$data,'time'=>$d,'count'=>$count,'counts'=>$counts]);
+      }
     }
     //修改信息
     public function setEmail()
@@ -652,21 +723,36 @@ class Share extends Controller
     //我的粉丝
     public function bBean()
     {
-        $bNew=new User();
-        $name=Session::get("names");
-        $nameid=$name['id'];      //查询用户的信息
-        $attnum=$bNew->numAtt($nameid);
-        $count=count($attnum);   //关注数
-        $pink=$bNew->numPink($nameid);
-        $counts=count($pink);    //粉丝数
-        $id=$name['id'];
-        $data=$bNew->bUserinfo($id);
-        $time=$_SESSION['think']['ucode'];
-        $tiems=$time['b_times'];
-        $str=strtotime($tiems);
-        $s=(time()-$str)/86400;
-        $d=floor($s);//博龄
-      $bean= $bNew->bbEan($id);    //我的粉丝
-        return view("b_bean",['name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts,'bean'=>$bean]);
+      if(empty($_SESSION['think']['ucode'])){
+          echo "<script>alert('您还没有登录');location.href='/'</script>";
+          $bNew=new User();
+          $name=Session::get("names");
+          $nameid=$name['id'];      //查询用户的信息
+          $attnum=$bNew->numAtt($nameid);
+          $count=count($attnum);   //关注数
+          $pink=$bNew->numPink($nameid);
+          $counts=count($pink);    //粉丝数
+          $id=$name['id'];
+          $data=$bNew->bUserinfo($id);
+          $bean= $bNew->bbEan($id);    //我的粉丝
+          return view("b_bean",['name'=>$name,'count'=>$count,'counts'=>$counts,'bean'=>$bean]);
+      }else{
+          $bNew=new User();
+          $name=Session::get("names");
+          $nameid=$name['id'];      //查询用户的信息
+          $attnum=$bNew->numAtt($nameid);
+          $count=count($attnum);   //关注数
+          $pink=$bNew->numPink($nameid);
+          $counts=count($pink);    //粉丝数
+          $id=$name['id'];
+          $data=$bNew->bUserinfo($id);
+          $time=$_SESSION['think']['ucode'];
+          $tiems=$time['b_times'];
+          $str=strtotime($tiems);
+          $s=(time()-$str)/86400;
+          $d=floor($s);//博龄
+          $bean= $bNew->bbEan($id);    //我的粉丝
+          return view("b_bean",['name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts,'bean'=>$bean]);
+      }
     }
 }
