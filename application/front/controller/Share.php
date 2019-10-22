@@ -351,6 +351,7 @@ class Share extends Controller
                 $coll=in_array($bid,$col);
                 $att=$bNew->bAtts($userid);  //根据用户查询是否关注博主
                 $atten=array_column($att,"dataid");
+//                var_dump($atten);die;
                 $atts=in_array($ids,$atten);
                 $countss=count($data);
                 $up =Session::get('up');
@@ -465,7 +466,8 @@ class Share extends Controller
         $res= $bNew->bAttnum($id);  //查询关注数
         $b_att=$res['b_att'];
         $userid=input("post.userid");//发表文章的用户id
-        $red=['userid'=>$id,'dataid'=>$userid];
+        $time=date("Y-m-d:H:i:s",time());
+        $red=['userid'=>$id,'dataid'=>$userid,'g_time'=>$time];
         $bAtt=$bNew->bAtt($red);
         if($bAtt){
             $bNew->bUpatt($b_att,$id);
@@ -491,6 +493,7 @@ class Share extends Controller
         $s=(time()-$str)/86400;
         $d=floor($s);
          $myblog=$bNew->bMyblog($id);
+
        return view("b_myblog",['blog'=>$myblog,'name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts]);
     }
     public function bMymany(){
@@ -645,7 +648,25 @@ class Share extends Controller
         }else{
             echo "<script>alert('您输入的邮箱已经存在');location.href='/emails'</script>";die;
         }
-
-
+    }
+    //我的粉丝
+    public function bBean()
+    {
+        $bNew=new User();
+        $name=Session::get("names");
+        $nameid=$name['id'];      //查询用户的信息
+        $attnum=$bNew->numAtt($nameid);
+        $count=count($attnum);   //关注数
+        $pink=$bNew->numPink($nameid);
+        $counts=count($pink);    //粉丝数
+        $id=$name['id'];
+        $data=$bNew->bUserinfo($id);
+        $time=$_SESSION['think']['ucode'];
+        $tiems=$time['b_times'];
+        $str=strtotime($tiems);
+        $s=(time()-$str)/86400;
+        $d=floor($s);//博龄
+      $bean= $bNew->bbEan($id);    //我的粉丝
+        return view("b_bean",['name'=>$name,'time'=>$d,'count'=>$count,'counts'=>$counts,'bean'=>$bean]);
     }
 }

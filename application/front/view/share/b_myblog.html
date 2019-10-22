@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.blog.com/static/qiantai/styles/main.css" rel="stylesheet">
     <style>
         .abc:hover{
@@ -39,17 +38,6 @@
             width: 120px;
             margin: 15px auto;
         }
-        /*.a{*/
-        /*display: flex;*/
-        /*}*/
-        /*.b{*/
-        /*position: absolute;*/
-        /*margin-left: 70%;*/
-        /*}*/
-        /*.c{*/
-        /*position: relative;*/
-        /*margin-left: 75%;*/
-        /*}*/
 
     </style>
 </head>
@@ -57,7 +45,8 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="/write" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i class="material-icons">mail</i></a>
     <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
         <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">
-      {if condition="empty($name)"}
+
+               {if condition="empty($name)"}
             <a href="#"><div class="site-logo"><img src="http://www.blog.com/wlogin.png" alt="" style="width: 120px;height: 120px;border-radius: 50%;"></div></a> <span class="site-description" style="margin-top: 10px;">未登录</span></span></div>
         {else /}
         <a href=""><div class="site-logo">
@@ -69,7 +58,7 @@
         </div></a><span style="margin-left: 110px">昵称：{$name.b_showname}</span><span class="site-description">
     </span><p style="margin-left: 60px;"><span style="margin-right: 60px;">关注：{$count}</span><span style="margin-right: 60px;">粉丝：{$counts}</span>博龄：{$time}天</p></span></div>{/if}
 
-<div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
+<div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only" >
     <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
         <a class="mdl-navigation__link" href="/home" ><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">首页</span</a>
         {if condition="empty($name)"}
@@ -77,6 +66,7 @@
         <a class="mdl-navigation__link nametwo"  href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
         <a class="mdl-navigation__link namethree" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
         <a class="mdl-navigation__link namefour" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+        <a class="mdl-navigation__link namefour" href=""><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的粉丝</span></a>
         <a class="mdl-navigation__link namefive" href="#"><span class="abc" style=""><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></span></a>
         {else /}
         <a class="mdl-navigation__link" href="/home"></a>
@@ -84,12 +74,16 @@
         <a class="mdl-navigation__link"  href="/mycol"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
         <a class="mdl-navigation__link" href="/mycoll"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
         <a class="mdl-navigation__link" href="/reco"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+        <a class="mdl-navigation__link " href="/bean"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的粉丝</span></a>
         <a class="mdl-navigation__link" href="/emails"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></a>
         {/if}
-        <a class="abc" href="/login" style="text-decoration: none;color: white;font-size: 14px;">登录</a> &nbsp; | &nbsp;
-        <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/reg">注册</a>            &nbsp; | &nbsp; &nbsp;
-        <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/quit">退出</a>
+
+
     </nav>
+    <a class="abc" href="/login" style="text-decoration: none;color: white;font-size: 14px;">登录</a> &nbsp; | &nbsp;
+
+    <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/reg">注册</a>            &nbsp; | &nbsp; &nbsp;
+    <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/quit">退出</a>
 </div>
 </header>
 <div class="mdl-layout__drawer mdl-layout--small-screen-only">
@@ -122,10 +116,45 @@
                     </div>
                 </div>
                 {/volist}
+                {$blog|raw}
             </section>
         </div>
             <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
-
+            <!--<section class="section&#45;&#45;center mdl-grid site-max-width">-->
+            <!--<div class="mdl-cell mdl-card mdl-shadow&#45;&#45;4dp portfolio-card">-->
+            <!--<div class="mdl-card__media">-->
+            <!--<img class="article-image" src="http://www.blog.com/static/qiantai/img/portfolio1.jpg" border="0" alt="">-->
+            <!--</div>-->
+            <!--<div class="mdl-card__title">-->
+            <!--<h2 class="mdl-card__title-text">Rocky Peak</h2>-->
+            <!--</div>-->
+            <!--<div class="mdl-card__supporting-text">-->
+            <!--Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="mdl-cell mdl-card mdl-shadow&#45;&#45;4dp portfolio-card">-->
+            <!--<div class="mdl-card__media">-->
+            <!--<img class="article-image" src="http://www.blog.com/static/qiantai/img/portfolio2.jpg" border="0" alt="">-->
+            <!--</div>-->
+            <!--<div class="mdl-card__title">-->
+            <!--<h2 class="mdl-card__title-text">Night Shadow</h2>-->
+            <!--</div>-->
+            <!--<div class="mdl-card__supporting-text">-->
+            <!--Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="mdl-cell mdl-card mdl-shadow&#45;&#45;4dp portfolio-card">-->
+            <!--<div class="mdl-card__media">-->
+            <!--<img class="article-image" src="http://www.blog.com/static/qiantai/img/portfolio3.jpg" border="0" alt="">-->
+            <!--</div>-->
+            <!--<div class="mdl-card__title">-->
+            <!--<h2 class="mdl-card__title-text">Sky Reach</h2>-->
+            <!--</div>-->
+            <!--<div class="mdl-card__supporting-text">-->
+            <!--Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</section>-->
 
             <section class="section--center mdl-grid site-max-width homepage-portfolio">
                 <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio.html">View Portfolio</a>
@@ -187,12 +216,11 @@
         </div>
     </footer>
 </main>
-
 <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
 </div>
 </body>
 </html>
-<script type="text/javascript">
+<script>
     $(".nameone").click(function () {
         alert("您还没有登录")
     })

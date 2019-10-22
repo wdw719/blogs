@@ -8,9 +8,9 @@
     <meta name="description" content="Demo of Material design portfolio template"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="http://www.blog.com/static/qiantai/styles/main.css" rel="stylesheet">
     <style>
         .abc:hover{
@@ -39,17 +39,6 @@
             width: 120px;
             margin: 15px auto;
         }
-        /*.a{*/
-        /*display: flex;*/
-        /*}*/
-        /*.b{*/
-        /*position: absolute;*/
-        /*margin-left: 70%;*/
-        /*}*/
-        /*.c{*/
-        /*position: relative;*/
-        /*margin-left: 75%;*/
-        /*}*/
 
     </style>
 </head>
@@ -57,7 +46,8 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><a href="/write" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp"><i class="material-icons">mail</i></a>
     <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
         <div class="mdl-layout__header-row site-logo-row"><span class="mdl-layout__title">
-     {if condition="empty($name)"}
+
+               {if condition="empty($name)"}
             <a href="#"><div class="site-logo"><img src="http://www.blog.com/wlogin.png" alt="" style="width: 120px;height: 120px;border-radius: 50%;"></div></a> <span class="site-description" style="margin-top: 10px;">未登录</span></span></div>
         {else /}
         <a href=""><div class="site-logo">
@@ -69,7 +59,7 @@
         </div></a><span style="margin-left: 110px">昵称：{$name.b_showname}</span><span class="site-description">
     </span><p style="margin-left: 60px;"><span style="margin-right: 60px;">关注：{$count}</span><span style="margin-right: 60px;">粉丝：{$counts}</span>博龄：{$time}天</p></span></div>{/if}
 
-<div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
+<div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only" >
     <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
         <a class="mdl-navigation__link" href="/home" ><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">首页</span</a>
         {if condition="empty($name)"}
@@ -77,6 +67,7 @@
         <a class="mdl-navigation__link nametwo"  href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
         <a class="mdl-navigation__link namethree" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
         <a class="mdl-navigation__link namefour" href="#"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+        <a class="mdl-navigation__link namefour" href=""><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的粉丝</span></a>
         <a class="mdl-navigation__link namefive" href="#"><span class="abc" style=""><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></span></a>
         {else /}
         <a class="mdl-navigation__link" href="/home"></a>
@@ -84,13 +75,16 @@
         <a class="mdl-navigation__link"  href="/mycol"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的评论</span></a>
         <a class="mdl-navigation__link" href="/mycoll"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的收藏</span></a>
         <a class="mdl-navigation__link" href="/reco"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的推荐</span></a>
+        <a class="mdl-navigation__link " href="/bean"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">我的粉丝</span></a>
         <a class="mdl-navigation__link" href="/emails"><span class="abc" style="text-decoration: none;color: white;font-size: 14px;">信息设置</span></a>
         {/if}
 
-        <a class="abc" href="/login" style="text-decoration: none;color: white;font-size: 14px;">登录</a> &nbsp; | &nbsp;
-        <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/reg">注册</a>            &nbsp; | &nbsp; &nbsp;
-        <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/quit">退出</a>
+
     </nav>
+    <a class="abc" href="/login" style="text-decoration: none;color: white;font-size: 14px;">登录</a> &nbsp; | &nbsp;
+
+    <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/reg">注册</a>            &nbsp; | &nbsp; &nbsp;
+    <a class="abc" style="text-decoration: none;color: white;font-size: 14px;" href="/quit">退出</a>
 </div>
 </header>
 <div class="mdl-layout__drawer mdl-layout--small-screen-only">
@@ -100,43 +94,140 @@
 <main class="mdl-layout__content">
     <div class="site-content">
         <div class="container"><div class="mdl-grid site-max-width">
+            <section class="section--center mdl-grid site-max-width">
+                <table class="table">
+                    <tr>
+                        <td>ID</td>
+                        <td>文章标题</td>
+                        <td>评论内容</td>
+                        <td>作者</td>
+                        <td>评论数</td>
+                        <td>文章被收藏数</td>
+                        <td>操作</td>
+                    </tr>
+                    {volist name="data" id="vo"}
+                    <tr>
+                        <td>{$vo.c_id}</td>
+                        <td>{$vo.b_title}</td>
+                        <td>{$vo.b_content}</td>
+                        <td>{$vo.b_author}</td>
+                        <td>{$vo.b_con}</td>
+                        <td>{$vo.b_colnum}</td>
+                        <td>
+                            {if ($vo.b_stas==0)}
+                            <button data-id="{$vo.c_id}" data-b="{$vo.b_id}" class="pl">删除</button>
+                            {else /} 你没有权限
+                            {/if}
 
+                        </td>
+                    </tr>
+                    {/volist}
+                </table>
+                {$data|raw}
+            </section>
         </div>
             <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
-                 <table class="table">
-                     <tr>
-                         <td>ID</td>
-                         <td>文章标题</td>
-                         <td>评论内容</td>
-                         <td>作者</td>
-                         <td>评论数</td>
-                         <td>文章被收藏数</td>
-                         <td>操作</td>
-                     </tr>
-                     {volist name="data" id="vo"}
-                     <tr>
-                         <td>{$vo.c_id}</td>
-                         <td>{$vo.b_title}</td>
-                         <td>{$vo.b_content}</td>
-                         <td>{$vo.b_author}</td>
-                         <td>{$vo.b_con}</td>
-                         <td>{$vo.b_colnum}</td>
-                         <td>
-                             {if ($vo.b_stas==0)}
-                             <button data-id="{$vo.c_id}" data-b="{$vo.b_id}" class="pl">删除</button>
-                             {else /} 你没有权限
-                             {/if}
+            <!--<section class="section&#45;&#45;center mdl-grid site-max-width">-->
+            <!--<div class="mdl-cell mdl-card mdl-shadow&#45;&#45;4dp portfolio-card">-->
+            <!--<div class="mdl-card__media">-->
+            <!--<img class="article-image" src="http://www.blog.com/static/qiantai/img/portfolio1.jpg" border="0" alt="">-->
+            <!--</div>-->
+            <!--<div class="mdl-card__title">-->
+            <!--<h2 class="mdl-card__title-text">Rocky Peak</h2>-->
+            <!--</div>-->
+            <!--<div class="mdl-card__supporting-text">-->
+            <!--Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="mdl-cell mdl-card mdl-shadow&#45;&#45;4dp portfolio-card">-->
+            <!--<div class="mdl-card__media">-->
+            <!--<img class="article-image" src="http://www.blog.com/static/qiantai/img/portfolio2.jpg" border="0" alt="">-->
+            <!--</div>-->
+            <!--<div class="mdl-card__title">-->
+            <!--<h2 class="mdl-card__title-text">Night Shadow</h2>-->
+            <!--</div>-->
+            <!--<div class="mdl-card__supporting-text">-->
+            <!--Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="mdl-cell mdl-card mdl-shadow&#45;&#45;4dp portfolio-card">-->
+            <!--<div class="mdl-card__media">-->
+            <!--<img class="article-image" src="http://www.blog.com/static/qiantai/img/portfolio3.jpg" border="0" alt="">-->
+            <!--</div>-->
+            <!--<div class="mdl-card__title">-->
+            <!--<h2 class="mdl-card__title-text">Sky Reach</h2>-->
+            <!--</div>-->
+            <!--<div class="mdl-card__supporting-text">-->
+            <!--Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</section>-->
 
-                         </td>
-                     </tr>
-                     {/volist}
-                 </table>
-            {$data|raw}
-            <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+            <section class="section--center mdl-grid site-max-width homepage-portfolio">
+                <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio.html">View Portfolio</a>
+            </section>
+
+            <div class="homepage-footer">
+                <section class="mdl-grid site-max-width">
+                    <div class="mdl-cell mdl-card mdl-cell--8-col mdl-cell--4-col-tablet  mdl-shadow--4dp portfolio-card">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Testimonials</h2>
+                        </div>
+                        <ul class="demo-list-three mdl-list">
+                            <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">person</i>
+                <span>Amazing people, always ready to help!</span>
+                <span class="mdl-list__item-text-body">
+                  Bryan Cranston, CEO, Amazing.com
+                </span>
+              </span>
+                            </li>
+                            <li class="mdl-list__item mdl-list__item--three-line">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons  mdl-list__item-avatar">person</i>
+                <span>Awesome work, they can do almost anything..</span>
+                <span class="mdl-list__item-text-body">
+                Aaron Paul, Marketing Lead, Awesome.com
+                </span>
+              </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h4>
+                                Featured event:<br>
+                                Community Meetup
+                                May 24, 2018<br>
+                                7-11pm
+                            </h4>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                                Add to Calendar
+                            </a>
+                            <div class="mdl-layout-spacer"></div>
+                            <i class="material-icons">event</i>
+                        </div>
+                    </div>
+                </section>
+            </div></div>
+    </div>
+    <footer class="mdl-mini-footer">
+        <div class="footer-container">
+            <div class="mdl-logo">&copy; Unitiled. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="#">Privacy & Terms</a></li>
+            </ul>
         </div>
+    </footer>
+</main>
+<script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+</div>
 </body>
 </html>
-<script type="text/javascript">
+<script>
     $(".nameone").click(function () {
         alert("您还没有登录")
     })
@@ -151,27 +242,5 @@
     })
     $(".namefive").click(function () {
         alert("您还没有登录")
-    })
-    //删除评论
-    $(".pl").click(function () {
-        var id=$(this).attr("data-id")//内容id
-        var b_id=$(this).attr("data-b")//文章id
-        // alert(id);return;
-        $.ajax({
-
-            url:'/delcon',
-            type:'post',
-            data:{id:id,b_id:b_id},
-            dataType:'json',
-            success:function (e) {
-                 if(e.code==200){
-                     alert(e.msg)
-                     location.href='/mycol'
-                 }else{
-                     alert(e.msg)
-                     location.href='/mycol'
-                 }
-            }
-        })
     })
 </script>

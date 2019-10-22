@@ -309,4 +309,13 @@ class User extends Model
     {
         return Db::table("b_attention")->where('dataid',$nameid)->column("userid");
     }
+    //我的粉丝
+    public function bbEan($id)
+    {
+        return Db::table('b_attention')
+            ->alias('a')
+            ->join(['b_name'=>'b'],'a.userid=b.id')
+            ->where('a.dataid',$id)
+            ->select();
+    }
 }

@@ -89,6 +89,7 @@ Route::any('delcoll', 'front/Share/bdelColl');//删除评论
 Route::any('reco', 'front/Share/bReco');//我的推荐
 Route::any('emails', 'front/Share/bEmails');//邮箱设置
 Route::any('setemail', 'front/Share/setEmail');//修改信息
+Route::any('bean', 'front/Share/bBean');//我的粉丝
 return [
 
 ];
